@@ -23,9 +23,13 @@ yo react-project-boilerplate
  * Yeoman can be too opinionated at times but is easily convinced not to be.
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
+## FAQ
+
+[Reference `React Transform Boilerplate`](https://github.com/gaearon/react-transform-boilerplate/blob/master/README.md)
+
 ## License
 
- © [haner](http://haner199401.github.io/)
+ © [Haner](http://haner199401.github.io/)
 
 
 [npm-image]: https://badge.fury.io/js/generator-react-project-boilerplate.svg
