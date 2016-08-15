@@ -25,13 +25,7 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
   }
 });
 
-console.log(webpackConfig.output.publicPath);
-
-var hotMiddleware = require('webpack-hot-middleware')(compiler,{
-  log: console.log,
-  path: '/__webpack_hmr',
-  heartbeat: 10 * 1000,
-});
+var hotMiddleware = require('webpack-hot-middleware')(compiler);
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
@@ -61,5 +55,5 @@ module.exports = app.listen(port, function (err) {
     console.log(err)
     return
   }
-  console.log('Listening at http://localhost:' + port + '\n')
-})
+  console.log('Listening at http://localhost:' + port + '\n');
+});

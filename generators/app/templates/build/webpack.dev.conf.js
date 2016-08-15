@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 Object.keys(baseWebpackConfig.entry).forEach(function(key){
-  baseWebpackConfig.entry[key] = ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',baseWebpackConfig.entry[key]];
+  baseWebpackConfig.entry[key] = ['webpack-hot-middleware/client',baseWebpackConfig.entry[key]];
 });
 
 module.exports = merge(baseWebpackConfig, {
@@ -24,7 +24,8 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
+      template:'./src/tmpl.html',
       inject: true
     })
   ]
-})
+});

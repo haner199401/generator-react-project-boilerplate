@@ -25,7 +25,7 @@ yo react-project-boilerplate
 
 ## License
 
- © [haner](haner199401.github.io)
+ © [haner](http://haner199401.github.io/)
 
 
 [npm-image]: https://badge.fury.io/js/generator-react-project-boilerplate.svg
