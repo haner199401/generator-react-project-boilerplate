@@ -24,13 +24,13 @@ module.exports = {
   },
   module: {
     preLoaders: [
-      
+
     ],
     loaders: [
-    { test: /\.(js|jsx)$/, 
+    { test: /\.(js|jsx)$/,
       include: projectRoot,
-      loaders: ['react-hot', 'babel?' + JSON.stringify({presets: ['react', 'es2015', 'stage-0']})], 
-      exclude: /node_modules/ 
+      loaders: ['react-hot', 'babel'],
+      exclude: /node_modules/
     },
       {
         test: /\.json$/,

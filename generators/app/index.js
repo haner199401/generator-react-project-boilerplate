@@ -47,7 +47,8 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: function () {
-    //全部 copy
+
+    //copy all files
     this.directory(this.sourceRoot(),this.destinationRoot());
 
     var pkg = this.fs.readJSON(this.templatePath('package.json'), {});
@@ -57,10 +58,23 @@ module.exports = yeoman.Base.extend({
 
     //改写 package.json
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    
+
+    //生成babel配置文件
+    this.fs.write(JSON.stringify({
+      presets: ['react', 'es2015', 'stage-0'],
+      plugins: [
+        "transform-runtime"
+      ],
+      env: {
+        development: {
+        presets: ["react-hmre"]
+      }
+    }}), this.destinationPath('.babelrc'));
+
   },
 
   install: function () {
-    this.installDependencies({bower: false});
+    //不安装依赖
+    // this.installDependencies({bower: false});
   }
 });
