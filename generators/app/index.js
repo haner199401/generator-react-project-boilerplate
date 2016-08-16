@@ -71,10 +71,18 @@ module.exports = yeoman.Base.extend({
       }
     }}));
 
+    //gitignore
+    this.fs.write(this.destinationPath('.gitignore'),['node_modules/','*.iml','.idea/','.DS_Store','node_modules','npm-debug.log','dist'].join('\n\r'));
   },
 
   install: function () {
-    //不安装依赖
-    // this.installDependencies({bower: false});
+    process.exit();
+    // this.installDependencies({
+    //   bower: false,
+    //   npm: false,
+    //   callback: function () {
+    //     // process.exit();
+    //   }
+    // });
   }
 });
