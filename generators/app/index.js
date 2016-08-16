@@ -60,7 +60,7 @@ module.exports = yeoman.Base.extend({
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
     //生成babel配置文件
-    this.fs.write(JSON.stringify({
+    this.fs.write(this.destinationPath('.babelrc'),JSON.stringify({
       presets: ['react', 'es2015', 'stage-0'],
       plugins: [
         "transform-runtime"
@@ -69,7 +69,7 @@ module.exports = yeoman.Base.extend({
         development: {
         presets: ["react-hmre"]
       }
-    }}), this.destinationPath('.babelrc'));
+    }}));
 
   },
 
