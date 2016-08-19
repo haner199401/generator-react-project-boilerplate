@@ -49,40 +49,23 @@ module.exports = yeoman.Base.extend({
   writing: function () {
 
     //copy all files
-    this.directory(this.sourceRoot(),this.destinationRoot());
+    this.directory(this.sourceRoot()+'/resource/',this.destinationRoot());
 
+    //修改 package 信息
     var pkg = this.fs.readJSON(this.templatePath('package.json'), {});
         pkg.name = this.props.projectName;
         pkg.description = this.props.projectDesc;
         pkg.author = this.props.author;
 
-    //改写 package.json
+    //写package.json
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
-    //生成babel配置文件
-    this.fs.write(this.destinationPath('.babelrc'),JSON.stringify({
-      presets: ['react', 'es2015', 'stage-0'],
-      plugins: [
-        "transform-runtime"
-      ],
-      env: {
-        development: {
-        presets: ["react-hmre"]
-      }
-    }}));
-
-    //gitignore
-    this.fs.write(this.destinationPath('.gitignore'),['node_modules/','*.iml','.idea/','.DS_Store','node_modules','npm-debug.log','dist'].join('\n\r'));
+    //copy 配置文件
+    this.copy('gitignore_tmpl', '.gitignore');
+    this.copy('babelrc_tmpl', '.babelrc');
   },
 
   install: function () {
     process.exit();
-    // this.installDependencies({
-    //   bower: false,
-    //   npm: false,
-    //   callback: function () {
-    //     // process.exit();
-    //   }
-    // });
   }
 });
